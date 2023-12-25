@@ -23,8 +23,10 @@ class stack{
             cout<<"the stack is full(overflow)";
             return;
         }
-        arr[++top]=item;
+        else{
+            arr[++top]=item;
         cout<<item<<" pushed into stack\n";
+        }
     }
     void display(){
         if(isEmpty()){
@@ -32,7 +34,7 @@ class stack{
             return;
         }
         cout<<"the stack elements are ";
-        for(int i=top;i>=0;--i){
+        for(int i=top;i>=0;i--){
             cout<<arr[i]<<" ";
         }
         cout<<endl;
@@ -61,12 +63,10 @@ int main(){
     cin>>cap;
     stack s1(cap);
     do{
-<<<<<<< HEAD
+
         cout<<"1 push element\n2 pop element\n3 peek element\n4 display element\n0 exit\n";
-=======
-        cout<<"\n1 push element\n2 pop element\n3 peek element\n4 display element\n0 exit\n";
->>>>>>> origin/main
-        cout<<"enter your operation ";
+
+              cout<<"enter your operation ";
         cin>>choice;
         switch(choice){
             case 1:
@@ -78,11 +78,9 @@ int main(){
                 cout<<s1.pop()<<endl;
                 break;
             case 3:
-<<<<<<< HEAD
                 cout<<s1.peek()<<endl;
-=======
+
                 cout<<s1.peek();
->>>>>>> origin/main
                 break;
             case 4:
                 s1.display();
