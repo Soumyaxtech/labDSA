@@ -1,16 +1,15 @@
 #include<iostream>
-using namespace std;
 
+using namespace std;
 class stack{
     private :
-        int top;
-        int cap;
-        int* arr;
+        int cap,top;
+        int*arr;
     public :
-    stack(int cap){
-         this->cap=cap;
-         this->top=-1;
-         this->arr=new int[cap];
+    stack(int size){
+        cap=size;
+        top=-1;
+        arr= new int[cap];
     }
     bool isEmpty(){
         return top==-1;
@@ -20,77 +19,74 @@ class stack{
     }
     void push(int item){
         if(isFull()){
-            cout<<"the stack is full(overflow)";
+            cout<<"the stack is full can't push \n";
             return;
         }
         else{
             arr[++top]=item;
-        cout<<item<<" pushed into stack\n";
+            cout<< item << " pushed into stack \n";
+            }
+    }
+    int pop(){
+        if(isEmpty()){
+            cout<<"the stack is empty can't pop anything \n";
+            return -1;
+        }
+        else{
+            return arr[top--];
+        }
+    }
+    int peek(){
+        if(isEmpty()){
+            cout<<"the stack is empty can't peek anything \n";
+            return -1;
+        }
+        else{
+            return arr[top];
         }
     }
     void display(){
         if(isEmpty()){
-            cout<<"the stack is empty(underflow)\n";
+            cout<<"the stack is empty can't display anything \n";
             return;
         }
-        cout<<"the stack elements are ";
+        cout<<"THE STACK ELEMENTS ARE ";
         for(int i=top;i>=0;i--){
-            cout<<arr[i]<<" ";
+            cout<< arr[i]<<" ";
         }
         cout<<endl;
     }
-
-    int pop(){
-        if(isEmpty()){
-            cout<<"the stack is empty(underflow)\n";
-            return -1;
-        }
-        return arr[top--];
-    }
-
-    int peek(){
-        if(isEmpty()){
-            cout<<"the stack is empty(underflow)\n";
-            return -1;
-        }
-        return arr[top];
-    }
-       
 };
 int main(){
-    int cap,choice,item;
-    cout<<"enter no of element in stack ";
+    int cap,item,choice;
+    cout<<"enter the number of element in a stack ";
     cin>>cap;
     stack s1(cap);
-    do{
-
-        cout<<"1 push element\n2 pop element\n3 peek element\n4 display element\n0 exit\n";
-
-              cout<<"enter your operation ";
-        cin>>choice;
-        switch(choice){
-            case 1:
-                cout<<"enter element to push ";
-                cin>>item;
-                s1.push(item);
-                break;
-            case 2:
-                cout<<s1.pop()<<endl;
-                break;
-            case 3:
-                cout<<s1.peek()<<endl;
-
-                cout<<s1.peek();
-                break;
-            case 4:
-                s1.display();
-                break;
-            case 0:
-                cout<<"exiting from the code ";
-                break;
-            default :
-            cout<<"invalid choice ";
-            break;
-        }
-    }while(choice);
+        do{
+            cout<<"DIFFERENT TYPES OF STACK OPERATION \n1 push element \n2 pop element \n3 peek element \n4 display stack element \n0 exit \n";
+            cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
+            cin>>choice;
+            switch(choice){
+                case 1:
+                    cout<<"enter the element to push ";
+                    cin>>item;
+                    s1.push(item);
+                    break;
+                case 2:
+                    cout<<"the pop element is "<<s1.pop()<<endl;
+                    break;
+                case 3:
+                    cout<<"the peek element is "<<s1.peek()<<endl;
+                    break;
+                case 4:
+                    s1.display();
+                    break;
+                case 0:
+                    cout<<"exit from the code........";
+                    break;
+                default :
+                    cout<<"INVALID INPUT TRY A VALID ONE ";
+                    break;
+            }
+        }while(choice);
 }

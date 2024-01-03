@@ -25,11 +25,11 @@ class queue{
             }
             else if(isEmpty()){
                 rear=front=0;
+                arr[rear]= item;
             }
             else{
-                rear=(rear + 1)% cap;
+                arr[++rear]=item;
             }
-            arr[rear]=item;
             cout<<item<<" pushed into queue \n";
         }
         int dequeue(){
@@ -37,17 +37,37 @@ class queue{
                 cout<<"the queue is empty can't dequeue \n";
                 return -1;
             }
-            else if(rear==front){
+            else if(front==rear){
                 int val=arr[front];
-                rear=front=-1;
+                front=rear=-1;
                 return val;
             }
             else{
                 int val=arr[front];
-                front=(front+1)%cap;
+                front++;
                 return val;
             }
             
+        }
+        int peek(){
+            if(isEmpty()){
+                cout<<"the queue is empty can't peek\n";
+                return -1;
+            }
+            else{
+                return arr[front];
+            }
+        }
+        void display(){
+            if(isEmpty()){
+                cout<<"the queue is empty can't display \n";
+                return;
+            }
+            cout<<"the queue elements are ";
+            for(int i=front;i<=rear;i++){
+                cout<<arr[i]<<" ";
+            }
+            cout<<endl;
         }
 };
 int main(){
@@ -56,7 +76,7 @@ int main(){
         cin>>cap;
         queue q1(cap);
         do{
-            cout<<"1 enqueue element\n2 dequeue element\n0 exit\n";
+            cout<<"1 enqueue element\n2 dequeue element\n3 peek element\n4 display\n0 exit\n";
         cout<<"enter your operation ";
         cin>>choice;
         switch(choice){
@@ -68,12 +88,12 @@ int main(){
             case 2:
                 cout<<"the dequeue element is "<<q1.dequeue()<<endl;
                 break;
-            // case 3:
-            //     cout<<s1.peek()<<endl;
-            //     break;
-            // case 4:
-            //     s1.display();
-            //     break;
+            case 3:
+                cout<<"the element is "<<q1.peek()<<endl;
+                break;
+            case 4:
+                q1.display();
+                break;
             case 0:
                 cout<<"exiting from the code ";
                 break;
