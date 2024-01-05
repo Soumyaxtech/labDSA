@@ -49,6 +49,17 @@ class circularQueue{
                     return val;
                 }
             }
+            int peek(){
+                if(isEmpty()){
+                    cout<<"the queue is empty so can't peek \n";
+                    return -1;
+                }
+                else{
+                    return arr[front];
+                }
+            }
+            
+            
 };
 
 int main(){
@@ -57,7 +68,7 @@ int main(){
             cin>>cap;
             circularQueue q1(cap);
             do{
-                cout<<"1 enqueue element\n2 dequeue element\n0 exit\n";
+                cout<<"1 enqueue element\n2 dequeue element\n3 peek element\n0 exit\n";
                 cout<<"enter your operation ";
                 cin>>choice;
                 switch(choice){
@@ -68,6 +79,9 @@ int main(){
                         break;
                     case 2:
                         cout<<"the dequeued element is "<<q1.dequeue()<<endl;
+                        break;
+                    case 3:
+                        cout<< " the peeked element is "<<q1.peek()<<endl;
                         break;
                     case 0:
                         cout<<"exit from this code ";
