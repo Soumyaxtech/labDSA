@@ -61,7 +61,7 @@ int main(){
     cin>>cap;
     stack s1(cap);
     do{
-        cout<<"\n1 push element\n2 pop element\n3 peek element\n4 display element\n0 exit\n";
+        cout<<"1 push element\n2 pop element\n3 peek element\n4 display element\n0 exit\n";
         cout<<"enter your operation ";
         cin>>choice;
         switch(choice){
@@ -74,7 +74,7 @@ int main(){
                 cout<<s1.pop()<<endl;
                 break;
             case 3:
-                cout<<s1.peek();
+                cout<<s1.peek()<<endl;
                 break;
             case 4:
                 s1.display();
