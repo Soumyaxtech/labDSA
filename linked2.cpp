@@ -6,17 +6,34 @@ class Node {
 public:
     int data;
     Node* next;
-
-    Node(int val) : data(val), next(NULL) {}
+    Node(int val){
+        this->data=val;
+        this->next=NULL;
+    }
+    
 };
-
-void insertAtHead(Node* &head, int d) {
+class linkedlist{
+    private :
+        Node*head;
+        Node*tail;
+    public :
+        linkedlist(){
+            this->head=NULL;
+            this->tail=NULL;
+        }
+void insertAtHead(int d) {
     Node* temp = new Node(d);
+    if(head==NULL){
+        head=tail=temp;
+    }
+    // Node* temp = new Node(d);
+    else{
     temp->next = head;
     head = temp;
 }
+}
 
-void insertAtEnd(Node* &tail, int d) {
+void insertAtEnd(int d) {
     Node* temp = new Node(d);
     if (tail == NULL) {
         tail = temp;
@@ -26,9 +43,9 @@ void insertAtEnd(Node* &tail, int d) {
     tail = tail->next;
 }
 
-void insertAtPosition(Node* &tail, Node* &head, int pos, int d) {
+void insertAtPosition(int pos, int d) {
     if (pos == 1) {
-        insertAtHead(head, d);
+        insertAtHead(d);
         return;
     }
     Node* temp = head;
@@ -38,7 +55,7 @@ void insertAtPosition(Node* &tail, Node* &head, int pos, int d) {
         count++;
     }
     if (temp == NULL) {
-        insertAtEnd(tail, d);
+        insertAtEnd(d);
         return;
     }
     Node* node2 = new Node(d);
@@ -46,7 +63,7 @@ void insertAtPosition(Node* &tail, Node* &head, int pos, int d) {
     temp->next = node2;
 }
 
-void deleteHead(Node* &head) {
+void deleteHead() {
     if (head == NULL) {
         cout << "List is empty. Cannot delete from an empty list." << endl;
         return;
@@ -56,7 +73,7 @@ void deleteHead(Node* &head) {
     delete prev;
 }
 
-void deleteEnd(Node* &head, Node* &tail) {
+void deleteEnd() {
     if (head == NULL) {
         cout << "List is empty. Cannot delete from an empty list." << endl;
         return;
@@ -78,8 +95,26 @@ void deleteEnd(Node* &head, Node* &tail) {
     tail = temp;
     tail->next = NULL;
 }
-
-void print(Node* &head) {
+void deleteAny(int pos){
+        if(pos==1){
+            deleteHead();
+            return;
+        }
+        else{
+            Node*prev=NULL;
+            Node*curr=head;
+            int count=1;
+            while(count<pos){
+                prev=curr;
+                curr=curr->next;
+                count++;
+            }
+            prev->next=curr->next;
+            curr->next=NULL;
+            delete curr;
+        }
+}
+void print() {
     if(head==NULL){
         cout<<"linkedlist is empty ";
         return;
@@ -90,13 +125,12 @@ void print(Node* &head) {
         temp = temp->next;
     }
 }
-
+};
 int main() {
     Node* head = NULL;
     Node* tail = NULL;
-
+    linkedlist l1;
     int choice, value, position;
-
     do {
         cout << "Linked List Operations:" << endl;
         cout << "1. Insert at the head" << endl;
@@ -104,8 +138,9 @@ int main() {
         cout << "3. Insert at a specific position" << endl;
         cout << "4. Delete the head" << endl;
         cout << "5. Delete the end" << endl;
-        cout << "6. Print the list" << endl;
-        cout << "7. Exit" << endl;
+        cout<<"6. Delete any position"<<endl;
+        cout << "7. Print the list" << endl;
+        cout << "0. Exit" << endl;
 
         cout << "Enter your choice: ";
         cin >> choice;
@@ -114,38 +149,43 @@ int main() {
             case 1:
                 cout << "Enter the value to insert at the head: ";
                 cin >> value;
-                insertAtHead(head, value);
+                l1.insertAtHead(value);
                 break;
             case 2:
                 cout << "Enter the value to insert at the end: ";
                 cin >> value;
-                insertAtEnd(tail, value);
+                l1.insertAtEnd(value);
                 break;
             case 3:
                 cout << "Enter the position to insert: ";
                 cin >> position;
                 cout << "Enter the value to insert at position " << position << ": ";
                 cin >> value;
-                insertAtPosition(tail, head, position, value);
+                l1.insertAtPosition(position,value);
                 break;
             case 4:
-                deleteHead(head);
+                l1.deleteHead();
                 break;
             case 5:
-                deleteEnd(head, tail);
+                l1.deleteEnd();
                 break;
             case 6:
-                // cout << "Current Linked List: ";
-                print(head);
-                cout << endl;
+                cout<<"enter the position you want to delete ";
+                cin>>position;
+                l1.deleteAny(position);
                 break;
             case 7:
+                // cout << "Current Linked List: ";
+                l1.print();
+                cout << endl;
+                break;
+            case 0:
                 cout << "Exiting..." << endl;
                 break;
             default:
                 cout << "Invalid choice. Please enter a valid option." << endl;
         }
-    } while (choice != 7);
+    } while (choice);
 
     return 0;
 }
