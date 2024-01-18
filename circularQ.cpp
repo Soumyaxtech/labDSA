@@ -100,7 +100,7 @@ int main(){
                         cout<<"exit from this code ";
                         break;
                     default :
-                        cout<<"invalid choice ";
+                        cout<<"invalid input try again ";
                         break;
                 }
             }
