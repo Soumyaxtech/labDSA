@@ -45,6 +45,27 @@ class doubly{
         }
         cout<<val<<" inserted into linkedlist\n";
     }
+    void insertAtPosition(int pos,int val){
+        if(pos==1){
+            insertAtHead(val);
+            return;
+        }
+        Node*temp=head;
+        int count=1;
+        while(count<pos-1  &&  temp!=NULL){
+            temp=temp->next;
+            count++;
+        }
+        if(temp==NULL){
+            insertAtEnd(val);
+            return;
+        }
+        Node*node1=new Node(val);
+        node1->next=temp->next;
+        temp->next->prev=node1;
+        node1->prev=temp;
+        temp->next=node1;
+    }
     void display(){
         if(head==NULL){
             cout<<"the linked-list is empty can't display anything ";
@@ -77,6 +98,13 @@ int main(){
                 cout<<"enter the element to insert at end ";
                 cin>>val;
                 l2.insertAtEnd(val);
+                break;
+            case 3:
+                cout<<"enter the position you want to insert element ";
+                cin>>pos;
+                cout<<"enter the element ";
+                cin>>val;
+                l2.insertAtPosition(pos,val);
                 break;
             case 7:
                 l2.display();
