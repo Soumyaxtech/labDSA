@@ -70,11 +70,11 @@ public:
 
         int i = front;
         cout << "Elements in the queue: ";
-        while (i != rear) {
+        while (i <= rear) {
             cout << arr[i] << " ";
-            i = (i + 1) % MAX_SIZE;
+            i++;
         }
-        cout << arr[rear] << endl;
+        cout<< endl;
     }
 
    
