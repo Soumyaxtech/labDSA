@@ -53,10 +53,12 @@ class doubly{
         Node*temp=head;
         int count=1;
         while(count<pos-1  &&  temp!=NULL){
+            cout<<temp->data<<endl;
+            cout<<count<<endl;
             temp=temp->next;
             count++;
         }
-        if(temp==NULL){
+        if(temp->next==NULL){
             insertAtEnd(val);
             return;
         }
