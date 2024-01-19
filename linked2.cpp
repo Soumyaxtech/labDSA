@@ -54,7 +54,7 @@ void insertAtPosition(int pos, int d) {
         temp = temp->next;
         count++;
     }
-    if (temp == NULL) {
+    if (temp ->next== NULL) {
         insertAtEnd(d);
         return;
     }
