@@ -68,9 +68,9 @@ void deleteHead() {
         cout << "List is empty. Cannot delete from an empty list." << endl;
         return;
     }
-    Node* prev = head;
-    head = head->next;
-    delete prev;
+    Node* temp = head;
+    head = temp->next;
+    delete temp;
 }
 
 void deleteEnd() {

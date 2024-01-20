@@ -87,6 +87,23 @@ class doubly{
 
         }
     }
+    void deleteEnd(){
+        if(tail==NULL){
+            cout<<"the linked-list is empty can't delete anything ";
+            return;
+        }
+        if(head==tail){
+            delete head;
+            head=tail=NULL;
+            return;
+        }
+        else{
+            Node*temp=tail->prev;
+            temp->next=NULL;
+            delete tail;
+            tail=temp;
+        }
+    }
     void display(){
         if(head==NULL){
             cout<<"the linked-list is empty can't display anything ";
@@ -106,7 +123,7 @@ int main(){
     int choice,val,pos;
     doubly l2;
     do{
-        cout<<"DOUBLY-LINKEDLIST OPERATIONS\n1. insert at begining\n2. insert at end\n3. insert any position\n4. delete at head\n7. display\n0. exit\n";
+        cout<<"DOUBLY-LINKEDLIST OPERATIONS\n1. insert at begining\n2. insert at end\n3. insert any position\n4. delete at head\n5. delete at tail\n7. display\n0. exit\n";
         cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
         cin>>choice;
         switch(choice){
@@ -132,6 +149,11 @@ int main(){
                 break;
             case 4:
                 l2.deleteHead();
+                l2.display();
+                cout<<endl;
+                break;
+            case 5:
+                l2.deleteEnd();
                 l2.display();
                 cout<<endl;
                 break;
