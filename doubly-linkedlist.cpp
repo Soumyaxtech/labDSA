@@ -104,12 +104,34 @@ class doubly{
             tail=temp;
         }
     }
+    void deleteAny(int pos){
+        if(pos==1){
+            deleteHead();
+            return;
+        }
+            Node*prev=NULL;
+            Node*temp=head;
+            int count=1;
+            while(count<pos && temp!=NULL){
+                prev=temp;
+                temp=temp->next;
+                count++;
+            }
+            if(temp==tail){
+                deleteEnd();
+                return;
+            }
+            temp->prev=NULL;
+            prev->next=temp->next;
+            temp->next=NULL;
+            delete temp;
+    }
     void display(){
         if(head==NULL){
             cout<<"the linked-list is empty can't display anything ";
             return;
         }
-        cout<<"the linked-list elements are ";
+        // cout<<"the linked-list elements are ";
             Node*temp=head;
             while(temp){
                 cout<<temp->data<<" ";
@@ -123,7 +145,7 @@ int main(){
     int choice,val,pos;
     doubly l2;
     do{
-        cout<<"DOUBLY-LINKEDLIST OPERATIONS\n1. insert at begining\n2. insert at end\n3. insert any position\n4. delete at head\n5. delete at tail\n7. display\n0. exit\n";
+        cout<<"DOUBLY-LINKEDLIST OPERATIONS\n1. insert at begining\n2. insert at end\n3. insert any position\n4. delete at head\n5. delete at tail\n6. delete anyPosition\n7. display\n0. exit\n";
         cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
         cin>>choice;
         switch(choice){
@@ -157,9 +179,22 @@ int main(){
                 l2.display();
                 cout<<endl;
                 break;
+            case 6:
+                cout<<"enter the position you want to delete ";
+                cin>>pos;
+                l2.deleteAny(pos);
+                l2.display();
+                cout<<endl;
+                break;
             case 7:
                 l2.display();
                 break;
+            case 0:
+                cout<<"exiting from this code ";
+                break;
+            default :
+                cout<<"invalid choice "<<endl;
+
         }
     }while(choice);
 }
