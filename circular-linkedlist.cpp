@@ -32,6 +32,19 @@ class circular{
             tail->next=temp;
         }
     }
+    void insertAtEnd(int val){
+        Node*temp=new Node(val);
+        if(tail==NULL){
+            tail=temp;
+            temp->next=head;
+            return;
+        }
+        else{
+            tail->next=temp;
+            tail=temp;
+            temp->next=head;
+        }
+    }
     void display(){
         if(head==NULL){
             cout<<"the list is empty"<<endl;
@@ -49,7 +62,7 @@ int main(){
     int choice,val,pos;
     circular c1;
     do{
-       cout<<"CIRCULAR-LINKEDLIST OPERATIONS\n1. insert at head\n";
+       cout<<"CIRCULAR-LINKEDLIST OPERATIONS\n1. insert at head\n2. insert at tail\n0. exit\n";
     cout<<"enter the operation you want to perform ";
     cin>>choice; 
     switch(choice){
@@ -57,6 +70,12 @@ int main(){
             cout<<"enter the element ";
             cin>>val;
             c1.insertAtHead(val);
+            c1.display();
+            break;
+        case 2:
+             cout<<"enter the element ";
+            cin>>val;
+            c1.insertAtEnd(val);
             c1.display();
             break;
         case 0:
