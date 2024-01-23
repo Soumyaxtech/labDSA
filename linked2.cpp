@@ -54,7 +54,7 @@ void insertAtPosition(int pos, int d) {
         temp = temp->next;
         count++;
     }
-    if (temp == NULL) {
+    if (temp ->next== NULL) {
         insertAtEnd(d);
         return;
     }
@@ -68,9 +68,9 @@ void deleteHead() {
         cout << "List is empty. Cannot delete from an empty list." << endl;
         return;
     }
-    Node* prev = head;
-    head = head->next;
-    delete prev;
+    Node* temp = head;
+    head = temp->next;
+    delete temp;
 }
 
 void deleteEnd() {
