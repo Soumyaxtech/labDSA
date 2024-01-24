@@ -104,10 +104,14 @@ void deleteAny(int pos){
             Node*prev=NULL;
             Node*curr=head;
             int count=1;
-            while(count<pos){
+            while(count<pos && curr!=tail){
                 prev=curr;
                 curr=curr->next;
                 count++;
+            }
+            if(curr==tail){
+                deleteEnd();
+                return;
             }
             prev->next=curr->next;
             curr->next=NULL;
