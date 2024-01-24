@@ -97,6 +97,27 @@ class circular{
             tail=temp;
         }
     }
+    void deleteAny(int pos){
+        if(pos==1){
+            deleteHead();
+            return;
+        }
+        Node*prev=NULL;
+        Node*temp=head;
+        int count=1;
+        while(count<pos && temp!=tail){
+            prev=temp;
+            temp=temp->next;
+            count++;
+        }
+        if(temp==tail){
+            deleteEnd();
+            return;
+        }
+        prev->next=temp->next;
+        temp->next=NULL;
+        delete temp;
+    }
     void display(){
         if(head==NULL){
             cout<<"the list is empty"<<endl;
@@ -114,7 +135,7 @@ int main(){
     int choice,val,pos;
     circular c1;
     do{
-       cout<<"CIRCULAR-LINKEDLIST OPERATIONS\n1. insert at head\n2. insert at tail\n3. insert any\n4. delete head\n5. delete end\n0. exit\n";
+       cout<<"CIRCULAR-LINKEDLIST OPERATIONS\n1. insert at head\n2. insert at tail\n3. insert any\n4. delete head\n5. delete end\n6. delete any\n7. display\n0. exit\n";
     cout<<"enter the operation you want to perform ";
     cin>>choice; 
     switch(choice){
@@ -147,6 +168,15 @@ int main(){
             c1.deleteEnd();
             c1.display();
             cout<<endl;
+            break;
+        case 6:
+            cout<<"enter the position ";
+            cin>>pos;
+            c1.deleteAny(pos);
+            c1.display();
+            break;
+        case 7:
+            c1.display();
             break;
         case 0:
             cout<<"exit from the code";
