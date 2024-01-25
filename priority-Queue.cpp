@@ -31,8 +31,8 @@ class Priority{
         else{
              int i = rear;
         while (i >= front && arr[i] > item) {
-            arr[i + 1] = arr[i];
-            i--;
+            arr[i + 1] = arr[i]; // it is for acending priority
+            i--;           // for decending only change arr[i]<item
         }
         arr[i + 1] = item;
         rear++;
