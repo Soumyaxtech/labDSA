@@ -113,6 +113,16 @@ class linkedlist{
             temp=temp->next;
         }
     }
+    bool search(int val){
+        Node*temp=head;
+        while(temp!=NULL){
+            if(temp->data==val){
+                return true;
+            }
+            temp=temp->next;
+        }
+        return false;
+    }
 
 };
 
@@ -120,7 +130,7 @@ int main(){
     int choice,val,pos;
     linkedlist l1;
     do{
-        cout<<"LINKED-LIST OPERATIONS\n1. insert at head\n2. insert at end\n3. insert at any\n4. delete at head\n5. delete at end\n6. delete at any\n7. display\n0. exit\n";
+        cout<<"LINKED-LIST OPERATIONS\n1. insert at head\n2. insert at end\n3. insert at any\n4. delete at head\n5. delete at end\n6. delete at any\n7. display\n8. search\n0. exit\n";
         cout<<"enter operation you want to perform ";
         cin>>choice;
         switch(choice){
@@ -159,6 +169,17 @@ int main(){
                 l1.display();
                 cout<<endl;
                 break;
+            case 8:
+                cout<<"enter value to search ";
+                cin>>val;
+                if(l1.search(val)){
+                    cout<<"value present in list "<<endl;
+                    break;
+                }
+                else{
+                    cout<<"value not present in list "<<endl;
+                    break;
+                }
             case 0:
                 cout<<"exiting from this code ";
                 break;
