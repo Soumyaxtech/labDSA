@@ -139,13 +139,23 @@ class doubly{
             }
           cout<<endl;
     }
+    bool search(int val){
+        Node*temp=head;
+        while(temp!=NULL){
+            if(temp->data==val){
+                return true;
+            }
+            temp=temp->next;
+        }
+        return false;
+    }
 };
 
 int main(){
     int choice,val,pos;
     doubly l2;
     do{
-        cout<<"DOUBLY-LINKEDLIST OPERATIONS\n1. insert at begining\n2. insert at end\n3. insert any position\n4. delete at head\n5. delete at tail\n6. delete anyPosition\n7. display\n0. exit\n";
+        cout<<"DOUBLY-LINKEDLIST OPERATIONS\n1. insert at begining\n2. insert at end\n3. insert any position\n4. delete at head\n5. delete at tail\n6. delete anyPosition\n7. display\n8. search\n0. exit\n";
         cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
         cin>>choice;
         switch(choice){
@@ -189,6 +199,16 @@ int main(){
             case 7:
                 l2.display();
                 break;
+            case 8:
+                cout<<"enter the element ";
+                cin>>val;
+                if(l2.search(val)){
+                    cout<<val<<"element present in list "<<endl;
+                    break;
+                }
+                else{
+                    cout<<val<<" element is not present in list"<<endl;
+                }
             case 0:
                 cout<<"exiting from this code ";
                 break;
