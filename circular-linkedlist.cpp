@@ -130,12 +130,22 @@ class circular{
         }while(temp!=head);
         cout<<endl;
     }
+    bool search(int val){
+        Node*temp=head;
+        do{
+            if(temp->data==val){
+                return true;
+            }
+            temp=temp->next;
+        }while(temp!=head);
+        return false;
+    }
 };
 int main(){
     int choice,val,pos;
     circular c1;
     do{
-       cout<<"CIRCULAR-LINKEDLIST OPERATIONS\n1. insert at head\n2. insert at tail\n3. insert any\n4. delete head\n5. delete end\n6. delete any\n7. display\n0. exit\n";
+       cout<<"CIRCULAR-LINKEDLIST OPERATIONS\n1. insert at head\n2. insert at tail\n3. insert any\n4. delete head\n5. delete end\n6. delete any\n7. display\n8. search\n0. exit\n";
     cout<<"enter the operation you want to perform ";
     cin>>choice; 
     switch(choice){
@@ -178,6 +188,17 @@ int main(){
         case 7:
             c1.display();
             break;
+        case 8:
+                cout<<"enter the element ";
+                cin>>val;
+                if(c1.search(val)){
+                    cout<<val<<"element present in list "<<endl;
+                    break;
+                }
+                else{
+                    cout<<val<<" element is not present in list"<<endl;
+                    break;
+                }
         case 0:
             cout<<"exit from the code";
             break;
