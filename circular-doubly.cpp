@@ -53,6 +53,29 @@ class circularDoubly{
             head->prev=temp;
         }
     }
+    void insertAny(int pos,int item){
+        if(pos==1){
+            insertHead(item);
+            return;
+        }
+        Node*temp=head;
+        int count=1;
+        while(count<pos-1 && temp!=tail){
+            temp=temp->next;
+            count++;
+        }
+        if(temp==tail){
+            insertEnd(item);
+            return;
+        }
+        else{
+            Node*node1=new Node(item);
+            node1->next=temp->next;
+            temp->next->prev=node1;
+            temp->next=node1;
+            node1->prev=temp;
+        }
+    }
     void display(){
         if(head==NULL){
             cout<<"the list is empty "<<endl;
@@ -71,7 +94,7 @@ int main(){
     int choice,item,pos;
     circularDoubly d1;
     do{
-        cout<<"CIRCULAR-DOUBLY-LINKEDLIST OPERATIONS\n1. insertAtHead\n2. insertAtEnd\n7. display\n0. exit\n";
+        cout<<"CIRCULAR-DOUBLY-LINKEDLIST OPERATIONS\n1. insertAtHead\n2. insertAtEnd\n3. insertAny\n7. display\n0. exit\n";
         cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
         cin>>choice;
         switch(choice){
@@ -85,6 +108,14 @@ int main(){
                 cout<<"enter element to insert ";
                 cin>>item;
                 d1.insertEnd(item);
+                d1.display();
+                break;
+            case 3:
+                cout<<"enter the position ";
+                cin>>pos;
+                cout<<"enter the element ";
+                cin>>item;
+                d1.insertAny(pos,item);
                 d1.display();
                 break;
             case 7:
