@@ -90,6 +90,28 @@ class circularDoubly{
             delete temp;
         }
     }
+    void deleteEnd(){
+        if(tail==NULL){
+            cout<<"the list is empty can't delete ";
+            return;
+        }
+        else if(head==tail){
+            delete head;
+            return;
+        }
+        else{
+            Node*temp=head;
+            while(temp->next!=tail){
+                temp=temp->next;
+            }
+            temp->next=tail->next;
+            head->prev=temp;
+            tail->prev=NULL;
+            tail->next=NULL;
+            delete tail;
+            tail=temp;
+        }
+    }
     void display(){
         if(head==NULL){
             cout<<"the list is empty "<<endl;
@@ -108,7 +130,7 @@ int main(){
     int choice,item,pos;
     circularDoubly d1;
     do{
-        cout<<"CIRCULAR-DOUBLY-LINKEDLIST OPERATIONS\n1. insertAtHead\n2. insertAtEnd\n3. insertAny\n4. deleteHead\n7. display\n0. exit\n";
+        cout<<"CIRCULAR-DOUBLY-LINKEDLIST OPERATIONS\n1. insertAtHead\n2. insertAtEnd\n3. insertAny\n4. deleteHead\n5. deleteEnd\n7. display\n0. exit\n";
         cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
         cin>>choice;
         switch(choice){
@@ -134,6 +156,10 @@ int main(){
                 break;
             case 4:
                 d1.deleteHead();
+                d1.display();
+                break;
+            case 5:
+                d1.deleteEnd();
                 d1.display();
                 break;
             case 7:
