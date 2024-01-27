@@ -145,13 +145,23 @@ class circularDoubly{
         }while(temp!=head);
         cout<<endl;
     }
+    bool search(int item){
+        Node*temp=head;
+        do{
+            if(temp->data==item){
+                return true;
+            }
+            temp=temp->next;
+        }while(temp!=head);
+        return false;
+    }
 };
 
 int main(){
     int choice,item,pos;
     circularDoubly d1;
     do{
-        cout<<"CIRCULAR-DOUBLY-LINKEDLIST OPERATIONS\n1. insertAtHead\n2. insertAtEnd\n3. insertAny\n4. deleteHead\n5. deleteEnd\n6.deleteAny\n7. display\n0. exit\n";
+        cout<<"CIRCULAR-DOUBLY-LINKEDLIST OPERATIONS\n1. insertAtHead\n2. insertAtEnd\n3. insertAny\n4. deleteHead\n5. deleteEnd\n6.deleteAny\n7. display\n8. search\n0. exit\n";
         cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
         cin>>choice;
         switch(choice){
@@ -192,6 +202,20 @@ int main(){
             case 7:
                 d1.display();
                 break;
+            case 8:
+                cout<<"enter the element ";
+                cin>>item;
+                if(d1.search(item)){
+                    cout<<item<<" present in list"<<endl;
+                    break;
+                }
+                else{
+                    cout<<item<<" is not present in list "<<endl;
+                    break;
+                }
+                d1.display();
+                break;
+
             case 0:
                 cout<<"exit from this code ";
                 break;
