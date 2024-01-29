@@ -37,6 +37,17 @@ void insertionSort(int arr[],int n){
         arr[j+1]=key;
     }
 }
+void selectionSort(int arr[],int n){
+    for(int i=0;i<n-1;i++){
+        int min=i;
+        for(int j=i+1;j<n;j++){
+            if(arr[j]<arr[min]){
+                min=j;
+            }
+        }
+        swap(arr[i],arr[min]);
+    }
+}
 void display(int arr[],int n){
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
@@ -53,7 +64,7 @@ int main(){
         cout<<i+1<<" element ";
         cin>>arr[i];
     }
-    cout<<"SORTING OPERATIONS\n1. BUBBLE SORT\n2. INSERTION SORT\n3. MODIFIED-BUBBLE-SORT\n0.exit\n";
+    cout<<"SORTING OPERATIONS\n1. BUBBLE SORT\n2. INSERTION SORT\n3. MODIFIED-BUBBLE-SORT\n4. SELECTION-SORT\n0.exit\n";
     cout<<"enter your operation no ";
     cin>>choice;
     cout<<"unsorted array ";
@@ -69,6 +80,10 @@ int main(){
         break;
         case 3:
         ModifiedbubbleSort(arr,n);
+        cout<<"the sorted array is ";
+        break;
+        case 4:
+        selectionSort(arr,n);
         cout<<"the sorted array is ";
         break;
         case 0:
