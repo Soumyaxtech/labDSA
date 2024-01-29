@@ -48,6 +48,26 @@ void selectionSort(int arr[],int n){
         swap(arr[i],arr[min]);
     }
 }
+
+int pertition(int arr[],int low,int high){
+    int pivot=arr[high];
+    int i=low-1;
+    for(int j=low;j<high;j++){
+        if(arr[j]<=arr[high]){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+void quickSort(int arr[],int low,int high){
+    if(low<high){
+        int k=pertition(arr,low,high);
+        quickSort(arr,low,k-1);
+        quickSort(arr,k+1,high);
+    }
+}
 void display(int arr[],int n){
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
@@ -64,7 +84,7 @@ int main(){
         cout<<i+1<<" element ";
         cin>>arr[i];
     }
-    cout<<"SORTING OPERATIONS\n1. BUBBLE SORT\n2. INSERTION SORT\n3. MODIFIED-BUBBLE-SORT\n4. SELECTION-SORT\n0.exit\n";
+    cout<<"SORTING OPERATIONS\n1. BUBBLE SORT\n2. INSERTION SORT\n3. MODIFIED-BUBBLE-SORT\n4. SELECTION-SORT\n5. QUICK-SORT\n0.exit\n";
     cout<<"enter your operation no ";
     cin>>choice;
     cout<<"unsorted array ";
@@ -86,6 +106,10 @@ int main(){
         selectionSort(arr,n);
         cout<<"the sorted array is ";
         break;
+        case 5:
+            quickSort(arr, 0, n - 1);
+            cout << "Array after Quick Sort: ";
+            break;
         case 0:
         cout<<"exit from the code ";
         break;
