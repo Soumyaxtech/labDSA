@@ -123,6 +123,24 @@ class linkedlist{
         }
         return false;
     }
+    // sorting of linkedlist
+    void bubbleSort(){
+        Node*curr=head;
+        Node*prev=NULL;
+        Node*temp=NULL;
+        while(curr->next!=NULL){
+            prev=head;
+            temp=prev->next;
+            while(temp!=NULL){
+                if(prev->data>temp->data){
+                    swap(prev->data,temp->data);
+                }
+                prev=prev->next;
+                temp=temp->next;
+            }
+            curr=curr->next;
+        }
+    }
 
 };
 
@@ -130,7 +148,7 @@ int main(){
     int choice,val,pos;
     linkedlist l1;
     do{
-        cout<<"LINKED-LIST OPERATIONS\n1. insert at head\n2. insert at end\n3. insert at any\n4. delete at head\n5. delete at end\n6. delete at any\n7. display\n8. search\n0. exit\n";
+        cout<<"LINKED-LIST OPERATIONS\n1. insert at head\n2. insert at end\n3. insert at any\n4. delete at head\n5. delete at end\n6. delete at any\n7. display\n8. search\n9. searching\n0. exit\n";
         cout<<"enter operation you want to perform ";
         cin>>choice;
         switch(choice){
@@ -180,6 +198,12 @@ int main(){
                     cout<<"value not present in list "<<endl;
                     break;
                 }
+            case 9:
+                l1.bubbleSort();
+                cout<<"the sorted linked-list is ";
+                l1.display();
+                cout<<endl;
+                break;
             case 0:
                 cout<<"exiting from this code ";
                 break;
