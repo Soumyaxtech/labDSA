@@ -35,6 +35,25 @@ void insert(int arr[],int n,int pos,int val){
         display(arr,n);
     }
 }
+void remove(int arr[],int n,int val){
+    for(int i=0;i<n;i++){
+        if(arr[i]==val){
+            for(int j=i;j<n-1;j++){
+                arr[j]=arr[j+1];
+            }
+            n--;
+            display(arr,n);
+            return;
+        }
+    }
+}
+void search(int arr[],int n,int val){
+    for(int i=0;i<n;i++){
+        if(arr[i]==val){
+            cout<<val<<" is present in array ";
+        }
+    }
+}
 
 int main(){
     int n,choice,pos,val;
@@ -47,7 +66,7 @@ int main(){
     }
     do{
     cout<<endl;
-    cout<<"ARRAY-OPERATION\n1.display array elements \n2. display any element\n3. update arrayPos\n4. insert in array\n0. exit\n";
+    cout<<"ARRAY-OPERATION\n1.display array elements \n2. display any element\n3. update arrayPos\n4. insert in array\n5. searching\n6. removing\n0. exit\n";
     cout<<"enter operation you want to perform ";
     cin>>choice;
     switch(choice){
@@ -74,6 +93,16 @@ int main(){
             cout<<"enter the val ";
             cin>>val;
             insert(arr,n,pos,val);
+            break;
+        case 5:
+            cout<<"enter element to search ";
+            cin>>val;
+            search(arr,n,val);
+            display(arr,n);
+        case 6:
+            cout<<"enter element to search ";
+            cin>>val;
+            remove(arr,n,val);
             break;
         case 0:
             cout<<"exit from this code ";
