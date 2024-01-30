@@ -89,31 +89,4 @@ int main(){
             break;
         }
     }while(choice);
-        do{
-            cout<<"DIFFERENT TYPES OF STACK OPERATION \n1 push element \n2 pop element \n3 peek element \n4 display stack element \n0 exit \n";
-            cout<<"ENTER THE OPERATION YOU WANT TO PERFORM ";
-            cin>>choice;
-            switch(choice){
-                case 1:
-                    cout<<"enter the element to push ";
-                    cin>>item;
-                    s1.push(item);
-                    break;
-                case 2:
-                    cout<<"the pop element is "<<s1.pop()<<endl;
-                    break;
-                case 3:
-                    cout<<"the peek element is "<<s1.peek()<<endl;
-                    break;
-                case 4:
-                    s1.display();
-                    break;
-                case 0:
-                    cout<<"exit from the code........";
-                    break;
-                default :
-                    cout<<"INVALID INPUT TRY A VALID ONE ";
-                    break;
-            }
-        }while(choice);
 }

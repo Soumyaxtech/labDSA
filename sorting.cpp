@@ -68,6 +68,49 @@ void quickSort(int arr[],int low,int high){
         quickSort(arr,k+1,high);
     }
 }
+void merge(int arr[],int l,int mid,int r){
+    int n1=(mid-l+1);
+    int n2=(r-mid);
+    int arr1[n1],arr2[n2];
+    for(int i=0;i<n1;i++){
+        arr1[i]=arr[l+i];
+    }
+    for(int i=0;i<n2;i++){
+        arr2[i]=arr[mid+i+1];
+    }
+    int i=0,j=0,k=l;
+    while(i<n1 && j<n2){
+        if(arr1[i]<arr2[j]){
+            arr[k]=arr1[i];
+            i++;
+            k++;
+        }
+        else{
+            arr[k]=arr2[j];
+            j++;
+            k++;
+        }
+    }
+    while(i<n1){
+        arr[k]=arr1[i];
+        i++;
+        k++;
+    }
+    while(j<n2){
+        arr[k]=arr2[j];
+        j++;
+        k++;
+    }
+
+}
+void mergeSort(int arr[],int l,int r){
+    if(l<r){
+        int mid=(r+l)/2;
+        mergeSort(arr,l,mid);
+        mergeSort(arr,mid+1,r);
+        merge(arr,l,mid,r);
+    }
+}
 void display(int arr[],int n){
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
@@ -84,7 +127,7 @@ int main(){
         cout<<i+1<<" element ";
         cin>>arr[i];
     }
-    cout<<"SORTING OPERATIONS\n1. BUBBLE SORT\n2. INSERTION SORT\n3. MODIFIED-BUBBLE-SORT\n4. SELECTION-SORT\n5. QUICK-SORT\n0.exit\n";
+    cout<<"SORTING OPERATIONS\n1. BUBBLE SORT\n2. INSERTION SORT\n3. MODIFIED-BUBBLE-SORT\n4. SELECTION-SORT\n5. QUICK-SORT\n6. MERGE-SORT\n0.exit\n";
     cout<<"enter your operation no ";
     cin>>choice;
     cout<<"unsorted array ";
@@ -109,6 +152,10 @@ int main(){
         case 5:
             quickSort(arr, 0, n - 1);
             cout << "Array after Quick Sort: ";
+            break;
+        case 6:
+            mergeSort(arr,0,n-1);
+            cout<<"the sorted array is ";
             break;
         case 0:
         cout<<"exit from the code ";
