@@ -25,19 +25,29 @@ void updatePos(int arr[],int n,int pos,int val){
         cout<<"invalid position "<<endl;
     }
 }
+void insert(int arr[],int n,int pos,int val){
+    if(n<100 && pos>=1 && pos<=n+1){
+        for(int i=n;i>=pos;i--){
+            arr[i]=arr[i-1];
+        }
+        arr[pos-1]=val;
+        n++;
+        display(arr,n);
+    }
+}
 
 int main(){
     int n,choice,pos,val;
     cout<<"enter length of array ";
     cin>>n;
-    int arr[n];
+    int arr[100];
     for(int i=0;i<n;i++){
         cout<<i+1<<" element ";
         cin>>arr[i];
     }
     do{
     cout<<endl;
-    cout<<"ARRAY-OPERATION\n1.display array elements \n2. display any element\n3. update arrayPos\n0. exit\n";
+    cout<<"ARRAY-OPERATION\n1.display array elements \n2. display any element\n3. update arrayPos\n4. insert in array\n0. exit\n";
     cout<<"enter operation you want to perform ";
     cin>>choice;
     switch(choice){
@@ -57,6 +67,13 @@ int main(){
             cin>>val;
             updatePos(arr,n,pos,val);
             display(arr,n);
+            break;
+        case 4:
+            cout<<"enter the position ";
+            cin>>pos;
+            cout<<"enter the val ";
+            cin>>val;
+            insert(arr,n,pos,val);
             break;
         case 0:
             cout<<"exit from this code ";
