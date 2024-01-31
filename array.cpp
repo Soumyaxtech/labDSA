@@ -103,7 +103,7 @@ int main(){
             cout<<"enter element to search ";
             cin>>val;
             remove(arr,n,val);
-            break;
+            break;  
         case 0:
             cout<<"exit from this code ";
             break;
