@@ -86,6 +86,7 @@ int main(){
                         cout<<"enter the element you want to enqueue ";
                         cin>>item;
                         q1.enqueue(item);
+                        q1.display();
                         break;
                     case 2:
                         cout<<"the dequeued element is "<<q1.dequeue()<<endl;
