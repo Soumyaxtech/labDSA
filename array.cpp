@@ -7,14 +7,16 @@ void display(int arr[],int n){
     }
     cout<<endl;
 }
-void displayAnyPosition(int arr[],int n,int pos){
-    if(pos>=1 && pos<=n){
-                cout<<"the element of position "<<pos<<" is "<<arr[pos-1];
-            }
-            else{
-                cout<<"invalid position ";
-            }
-            cout<<endl;
+void displayAnyPosition(int arr[],int n,int val){
+    for(int i=0;i<n;i++){
+        if(arr[i]==val){
+            cout<<val<<" present in array ";
+        }
+        
+    }
+    cout<<endl; 
+
+
 }
 void updatePos(int arr[],int n,int pos,int val){
     if(pos>=1 && pos<=n){
@@ -74,9 +76,9 @@ int main(){
             display(arr,n);
             break;
         case 2:
-            cout<<"enter the position ";
-            cin>>pos;
-            displayAnyPosition(arr,n,pos);
+            cout<<"enter the val ";
+            cin>>val;
+            displayAnyPosition(arr,n,val);
             display(arr,n);
             break;
         case 3:

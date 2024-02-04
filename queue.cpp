@@ -81,12 +81,11 @@ public:
 };
 
 int main() {
-    int size;
+    int size,choice,value;
     cout << "Enter the maximum size of the queue: ";
     cin >> size;
 
     Queue q(size);
-    int choice, value;
 
     do {
         cout << "\nQueue Operations:\n";
