@@ -131,9 +131,6 @@ int main(){
     int choice,val;
     Node*root;
     BST b1;
-    root=b1.getroot();
-    // cout<<"set the root at ";
-    // cin>>val;
     do{
         cout<<"\nBST OPERATION\n1. insert\n2. inorder traverse\n3. preorder traverse\n4. postorder traverse\n5. height\n0. exit\n";
         cout<<"enter your operations ";
