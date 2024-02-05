@@ -89,7 +89,7 @@ int main(){
     int choice,item,priority;
     Prairoty p1;
     do{
-        cout<<"1. insert\n2. display\n3. dequeue\n0. exit\n";
+        cout<<"1. insert\n2. display\n3. dequeue\n4. is empty\n0. exit\n";
         cout<<"enter the operation ";
         cin>>choice;
         switch(choice){
@@ -108,6 +108,15 @@ int main(){
                 cout<<p1.dequeue()<<endl;
                 p1.display();
                 break;
+            case 4:
+                if(p1.isEmpty()){
+                    cout<<"the queue is empty "<<endl;
+                    break;
+                }
+                else{
+                    cout<<"the queue is not empty "<<endl;
+                    break;
+                }
             case 0:
                 cout<<"exiting from this code ";
                 break;
